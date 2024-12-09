@@ -7,3 +7,18 @@ application:
     path: app-chart
   destination:
     namespace: app-chart
+
+#the value for my app chart
+appChart:
+  replicaCount: 2
+  image:
+    repository: nginx
+    tag: "1.21.1"
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
