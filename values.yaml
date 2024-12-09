@@ -7,3 +7,5 @@ application:
     path: .
   destination:
     namespace: app-chart
+
+environment: develop
