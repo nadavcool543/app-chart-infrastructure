@@ -5,13 +5,17 @@ metadata:
   namespace: {{ .Values.application.namespace }}
 spec:
   project: default
-  source:
-    repoURL: {{ .Values.application.source.repoURL }}
-    targetRevision: {{ .Values.application.source.targetRevision }}
-    path: {{ .Values.application.source.path }}
-    helm:
-      valueFiles:
-        - override-values.yaml
+  sources:
+    - repoURL: {{ .Values.application.source.repoURL }}
+      targetRevision: {{ .Values.application.source.targetRevision }}
+      path: {{ .Values.application.source.path }}
+    - repoURL: https://github.com/nadavcool543/app-chart-infrastructure.git
+      targetRevision: HEAD
+      path: .
+  sourceType: Helm
+  helm:
+    valueFiles:
+      - override-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.application.destination.namespace }}
