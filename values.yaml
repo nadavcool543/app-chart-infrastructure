@@ -4,7 +4,7 @@ application:
   source:
     repoURL: https://github.com/nadavcool543/app-chart.git
     targetRevision: HEAD
-    path: app-chart
+    path: .
   destination:
     namespace: app-chart
 
