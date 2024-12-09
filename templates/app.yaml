@@ -11,7 +11,7 @@ spec:
       path: .
       helm:
         valueFiles:
-          - $values/override-values.yaml
+          - $values/environment/{{ .Values.environment }}/value.yaml
     - repoURL: https://github.com/nadavcool543/app-chart-infrastructure.git
       targetRevision: HEAD
       path: .
