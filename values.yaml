@@ -1,0 +1,9 @@
+application:
+  name: app-chart
+  namespace: argocd
+  source:
+    repoURL: https://github.com/nadavcool543/app-chart.git
+    targetRevision: HEAD
+    path: app-chart
+  destination:
+    namespace: app-chart
