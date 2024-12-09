@@ -10,31 +10,8 @@ spec:
     targetRevision: {{ .Values.application.source.targetRevision }}
     path: {{ .Values.application.source.path }}
     helm:
-      values: |
-        replicaCount: {{ .Values.appChart.replicaCount }}
-        image:
-          repository: {{ .Values.appChart.image.repository }}
-          tag: {{ .Values.appChart.image.tag | quote }}
-          pullPolicy: {{ .Values.appChart.image.pullPolicy }}
-        service:
-          type: {{ .Values.appChart.service.type }}
-          port: {{ .Values.appChart.service.port }}
-        {{- with .Values.appChart.resources }}
-        resources:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
-        {{- with .Values.appChart.nodeSelector }}
-        nodeSelector:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
-        {{- with .Values.appChart.tolerations }}
-        tolerations:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
-        {{- with .Values.appChart.affinity }}
-        affinity:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
+      valueFiles:
+        - override-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.application.destination.namespace }}
@@ -44,3 +21,4 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+
