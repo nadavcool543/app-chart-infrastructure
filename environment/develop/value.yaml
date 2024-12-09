@@ -7,7 +7,7 @@ global:
     repo: https://github.com/nadavcool543/app-chart-infrastructure.git
     targetRevision: HEAD
 
-replicaCount: 4
+replicaCount: 7
 
 image:
   repository: nginx
