@@ -6,16 +6,16 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: {{ .Values.application.source.repoURL }}
-      targetRevision: {{ .Values.application.source.targetRevision }}
-      path: {{ .Values.application.source.path }}
+    - repoURL: https://github.com/nadavcool543/app-chart.git
+      targetRevision: HEAD
+      path: .
+      helm:
+        valueFiles:
+          - $values/override-values.yaml
     - repoURL: https://github.com/nadavcool543/app-chart-infrastructure.git
       targetRevision: HEAD
       path: .
-  sourceType: Helm
-  helm:
-    valueFiles:
-      - override-values.yaml
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.application.destination.namespace }}
