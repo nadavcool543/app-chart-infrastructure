@@ -1,0 +1,31 @@
+global:
+  environment: qa
+  chart:
+    repo: https://github.com/nadavcool543/app-chart.git
+    targetRevision: HEAD
+  values:
+    repo: https://github.com/nadavcool543/app-chart-infrastructure.git
+    targetRevision: HEAD
+
+replicaCount: 3  
+
+image:
+  repository: nginx
+  tag: "1.21.1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
